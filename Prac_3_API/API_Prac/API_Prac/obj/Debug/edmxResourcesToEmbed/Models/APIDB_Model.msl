@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="API_DBModelStoreContainer" CdmEntityContainer="API_DBEntities">
+    <EntitySetMapping Name="Brands">
+      <EntityTypeMapping TypeName="API_DBModel.Brand">
+        <MappingFragment StoreEntitySet="Brands">
+          <ScalarProperty Name="Brand_ID" ColumnName="Brand_ID" />
+          <ScalarProperty Name="Brand_Name" ColumnName="Brand_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Keyboards">
+      <EntityTypeMapping TypeName="API_DBModel.Keyboard">
+        <MappingFragment StoreEntitySet="Keyboards">
+          <ScalarProperty Name="Keyboard_ID" ColumnName="Keyboard_ID" />
+          <ScalarProperty Name="Keyboard_Name" ColumnName="Keyboard_Name" />
+          <ScalarProperty Name="Brand_ID" ColumnName="Brand_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Monitors">
+      <EntityTypeMapping TypeName="API_DBModel.Monitor">
+        <MappingFragment StoreEntitySet="Monitors">
+          <ScalarProperty Name="Monitor_ID" ColumnName="Monitor_ID" />
+          <ScalarProperty Name="Monitor_Name" ColumnName="Monitor_Name" />
+          <ScalarProperty Name="Brand_ID" ColumnName="Brand_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

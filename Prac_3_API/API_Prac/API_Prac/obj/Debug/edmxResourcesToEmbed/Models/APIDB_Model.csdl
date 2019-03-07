@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="API_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Brand">
+    <Key>
+      <PropertyRef Name="Brand_ID" />
+    </Key>
+    <Property Name="Brand_ID" Type="Int32" Nullable="false" />
+    <Property Name="Brand_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Keyboards" Relationship="Self.FK__Keyboards__Brand__15502E78" FromRole="Brands" ToRole="Keyboards" />
+    <NavigationProperty Name="Monitors" Relationship="Self.FK__Monitors__Brand___1273C1CD" FromRole="Brands" ToRole="Monitors" />
+  </EntityType>
+  <EntityType Name="Keyboard">
+    <Key>
+      <PropertyRef Name="Keyboard_ID" />
+    </Key>
+    <Property Name="Keyboard_ID" Type="Int32" Nullable="false" />
+    <Property Name="Keyboard_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Brand_ID" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK__Keyboards__Brand__15502E78" FromRole="Keyboards" ToRole="Brands" />
+  </EntityType>
+  <EntityType Name="Monitor">
+    <Key>
+      <PropertyRef Name="Monitor_ID" />
+    </Key>
+    <Property Name="Monitor_ID" Type="Int32" Nullable="false" />
+    <Property Name="Monitor_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Brand_ID" Type="Int32" />
+    <NavigationProperty Name="Brand" Relationship="Self.FK__Monitors__Brand___1273C1CD" FromRole="Monitors" ToRole="Brands" />
+  </EntityType>
+  <Association Name="FK__Keyboards__Brand__15502E78">
+    <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Keyboards" Type="Self.Keyboard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brands">
+        <PropertyRef Name="Brand_ID" />
+      </Principal>
+      <Dependent Role="Keyboards">
+        <PropertyRef Name="Brand_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Monitors__Brand___1273C1CD">
+    <End Role="Brands" Type="Self.Brand" Multiplicity="0..1" />
+    <End Role="Monitors" Type="Self.Monitor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Brands">
+        <PropertyRef Name="Brand_ID" />
+      </Principal>
+      <Dependent Role="Monitors">
+        <PropertyRef Name="Brand_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="API_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Brands" EntityType="Self.Brand" />
+    <EntitySet Name="Keyboards" EntityType="Self.Keyboard" />
+    <EntitySet Name="Monitors" EntityType="Self.Monitor" />
+    <AssociationSet Name="FK__Keyboards__Brand__15502E78" Association="Self.FK__Keyboards__Brand__15502E78">
+      <End Role="Brands" EntitySet="Brands" />
+      <End Role="Keyboards" EntitySet="Keyboards" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Monitors__Brand___1273C1CD" Association="Self.FK__Monitors__Brand___1273C1CD">
+      <End Role="Brands" EntitySet="Brands" />
+      <End Role="Monitors" EntitySet="Monitors" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
