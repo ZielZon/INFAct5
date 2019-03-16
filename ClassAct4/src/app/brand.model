@@ -1,0 +1,7 @@
+import { keyBoard } from './keyboard.model
+
+export interface Brand {
+  brandID :number;
+  brandName: string;
+  keyboard: keyBoard;
+}

@@ -1,0 +1,72 @@
+<h1>Add a Brand:</h1>
+
+<!--<form [formGroup]="messageForm" (ngSubmit)="onTest(messageForm.value)">
+
+
+    <label>
+      Brand ID:
+      <input type="text" formControlName="bID">
+      <div *ngIf="submitted && messageForm.controls.bID.errors" class="error">
+        <div *ngIf="messageForm.controls.bID.errors.required">Brand ID is required</div>
+      </div>
+    </label>
+    <br />
+    <label>
+      Brand Name:
+      <input type="text" formControlName="bName">
+      <div *ngIf="submitted && messageForm.controls.bName.errors" class="error">
+        <div *ngIf="messageForm.controls.bName.errors.required">Brand Name required!</div>
+        <div *ngIf="messageForm.controls.bName.errors.maxLength">Brand Name is too long!</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Add To Database" class="cta" >
+
+    <h5 *ngIf="success">Your details have been captured successfully!</h5>
+  
+  </form>
+
+  <div *ngIf="success" class="results">
+    <strong>Name:</strong> 
+    <span>{{ messageForm.controls.bID.value }}</span>
+
+    <strong>Surname:</strong> 
+    <span>{{ messageForm.controls.bName.value }}</span>
+    
+  </div>-->
+
+  <form #personForm="ngForm" (ngSubmit)="onTest(personForm.value, personForm,brandName?.value.length  )">   
+      <label>
+          Brand ID:
+          <input name="Brand_ID"  type="text" required  [(ngModel)]="Brand_ID" #brandID="ngModel"
+         #brandID ="ngModel"><br />
+          <div *ngIf="brandID.errors && personForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+	          <div *ngIf="brandID.errors.required">
+		        Brand ID is required
+            </div>
+         </div>	
+         <div *ngIf="isNumber(brandID.value)">
+           sdfsdfds
+            Brand ID must be a number
+          </div>
+      </label>  
+
+
+    <label>
+        Brand Name:
+        <input name="Brand_Name" required [(ngModel)]="Brand_Name" #brandName="ngModel"><br />
+        <div *ngIf="brandName.errors && personForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'"> 
+          <div *ngIf="brandName.errors.required">
+          Brand Name is required 
+          </div>
+        </div> 
+         <div *ngIf="brandName?.value.length > 30" id="brandRequired" > 
+            Brand Name must be less than 30 characters
+            </div>	
+      
+
+    </label>  
+    
+
+    <input type="submit" value="Add To Database" class="cta" >
+ </form>  
